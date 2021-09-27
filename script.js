@@ -9,7 +9,7 @@ function insertDate() {
        return alert('Ingresa el Login que utilizas en el servidor de argentina limando carter.');
     }
     
-    var mysql  = require('mysql');
+    var mysql  = require('mysql')
     var connection = mysql.createConnection({
         host     : 'na2.ultra-h.com',
         user     : 'server_6846',
