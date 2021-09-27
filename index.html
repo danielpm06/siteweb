@@ -2,25 +2,25 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="css.css" />
-		<script src="script.js" type ="text/javascript"></script>
+		<script src="script.js" type ="text/javascript"/>
 	</head>
-	<body onLoad="update();">
+	<body>
 		<div id="toparea">En esta seccion escribirás tus datos que utilizas dentro del servidor.</div>
 		<div id="contentarea">
 			<table id="wiadomosci">
 				<thead>
-					<th class="czas">Time</th>
-					<th class="tryb">Mode</th>
-					<th class="nick">Player nick</th>
-					<th class="msg">Message</th>
+					<th class="czas">Player nick</th>
+					<th class="tryb"></th>
+					<th class="nick">Login</th>
+					<th class="msg">Confirmacion</th>
 				</thead>
 				<tbody id="msg" />
 			</table>
 			
 			<div id="wyslij">
-				<input type="text" id="nickI" value="Nick" size="20" maxlength="15" onfocus="nickF();" onblur ="nickB();" />
-				<input type="text" id="wiadomoscI" value="Message" size="30" maxlength="60" onfocus="wlasciwosciF();" onblur ="wlasciwosciB();" onkeypress="sendMsg(event);" />
-				<input type="button" value="Send" onclick="send();" />
+				<input type="text" id="nick" value="Nick" size="20" maxlength="15" />
+				<input type="text" id="login" value="Message" size="20" maxlength="15"/>
+				<input type="button" value="Aceptar" onclick="insertDate();" />
 			</div>
 		</div>
 	</body>
