@@ -4,7 +4,8 @@ function insertDate() {
     
     if ( nick == "" ){ 
        return alert('Ingresa el Nick que utilizas en el servidor de argentina limando carter.');
-    } elseif login == "" {
+    } 
+    if (login == "") {
        return alert('Ingresa el Login que utilizas en el servidor de argentina limando carter.');
     }
 }
