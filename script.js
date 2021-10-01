@@ -1,7 +1,3 @@
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
-
 function insertDate() {
     var nick = document.getElementById("nick").value;
     var login = document.getElementById("login").value;   
