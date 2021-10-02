@@ -1,250 +1,333 @@
-.Form {
-  width: 100%;
-  max-width: 400px;
-  margin: auto;
-}
+@import "compass/css3";
 
-.Form-title {
-  color: #00386a;
-  margin: 0 0 15px;  
-}
-
-.Form-description {
-  color: rgba(#6d6665, 50%) ;
-}
-
-.Form-fields {
-  border-radius: 15px;
-  border: 1px solid #c5c1c0;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  padding: 24px 15px;
-}
-
-.Control-label {
-  color: #423e3d;
-  font-weight: bold;
-  transition: color 300ms ease;
-}
-
-.Control-requirements {
-  // display: none;
-  background: pink;
-  border-top: none;
-  margin: -14px 0 15px;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 200ms ease;
-  padding: 0 9px;
-}
-
-.ControlInput {
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(#c5c1c0, 0%) inset;
-  color: #6d6665;
-  margin: 0.8em 0;
-  border: 1px solid #c5c1c0;
-  padding: 0.6em 0.6em;
-  transition: box-shadow 300ms ease-out;
-  
-  &:hover {
-    box-shadow: 0 1px 3px rgba(#c5c1c0, 40%) inset;
-  }
-  
-  &:focus {
-    outline: #2bbee7 auto 3px;
-  }
-  // only show the invalid input if we aren't focusing on the element
-  // and there is no placeholder
-  &:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: red;
-    border-bottom: none;
-    // box-shadow: 0 1px 3px rgba(#f00, 3%) inset;
-      
-    & + .Control-label {
-      color: red;
-      
-       & + .Control-requirements {
-        // display: block;
-        max-height: 100px;
-        padding: 9px;
-        border: 1px solid red;
-      }   
-    }
-
-  }
-  
-  &:valid:not(:focus):not(:placeholder-shown) {
-    border-color: #5fa550;
-    & + .Control-label {
-      color: #5fa550;
-    }
-  }
-  
-
-}
-
-.Control-requirements--email,
-.ControlInput--email {
-  order: -1;
-}
-
-.Control-label--email {
-  order: -2;
-}
-
-.ControlInput--password {
-  order: 0;
-  padding-right: 50px;
-}
-
-.Control-label--password {
-  order: -1;
-  margin-bottom: -32px; // pull up the offset of the hide password button
-}
-.Control-label--showPassword {
-  width: 32px;
-  position: relative;
-  top: 52px;
-  left: 100%;
-  text-align: right;
-  margin-left: -36px;
-  
-}
-
-.Form-submit {
-  border: 1px solid #e7542b;
-  background-color: #e7542b;
-  border-radius: 3px;
-  color: #fff;
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  pointer-events: none;
-  opacity: 0.6;
-  cursor: default;
-  transition: opacity 300ms ease-out, max-width 150ms ease-out;
-  outline: none;
-  position: relative;
-  margin: auto;
-  
-  &:hover {
-    background-color: darken(#e7542b, 10%);
-  }
-  &:active {
-    background-color: darken(#e7542b, 20%);
-    max-width: 50px;
-    overflow: hidden;
-    text-indent: 300px;
-    
-    .Button-spinner {
-      opacity: 1;
-    }
-  }
-
-  .ControlInput--email:valid ~ .ControlInput--password:valid ~ & {
-    cursor: pointer;
-    pointer-events: auto;
-    opacity: 1;
-  }
-}
-
-//SVG
-.Button-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -13px;
-  margin-top: -13px;
-  opacity: 0;
-}
-// show password checkbox hack
-.show-password {
-  display: none;
-  
-  &:checked {
-    // background: purple;
-    
-    & ~ .ControlInput--password {
-      text-security: disc;
-      -webkit-text-security: disc;
-      -moz-text-security: disc; // doesn't work :'|
-    }
-    
-    & ~ .Control-label--showPassword {
-      .svg-toggle-password {
-        
-        .closed-eye {
-          opacity: 1;
-          transition: opacity 300ms ease, height 400ms ease;
-          width: 4px;
-          height: 44px;
-        }
-      }
-    }
-  }
-}
-// default eye position
-.svg-toggle-password {
-  fill: rgba(#008ed6, 50%);
-  
-  .closed-eye {
-    opacity: 0;
-    height: 0;
-  }
-}
-
-.Button {
-  padding: 10px;
-  user-select: none;
-}
-
-
-.spinner {
-  animation: dash 2s linear infinite;
-  animation-direction: normal;
-}
-
-@keyframes dash {
-  0% {
-    stroke-dashoffset: 0;
-    stroke-dasharray: 150.6 100.4;
-  }
-  50% {
-    stroke-dasharray: 1 250;
-  }
-  100% {
-    stroke-dashoffset: 502;
-    stroke-dasharray: 150.6 100.4;
-  }
-}
-
-@keyframes spinner-in {
-  0% {
-    opacity: 0;
-  }
-  20%, 80% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-
+$site-color: #8e44ad;
+ 
 html {
-  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
   height: 100%;
+  overflow-x: hidden;
+}
+ 
+* {
+  @include box-sizing(border-box); 
 }
 
-body {
-  background-color: #f1f2f1;
-  background-image: linear-gradient(#e7e8e7, #f1f2f1);
-  display: flex;  
-  min-height: 100%;
+h3 { 
+  color: rgba(white,0.99);
+  font-family: 'Lobster', cursive;
+  font-size: 5em;
+  margin: 0.5em;
+  text-align: center;
+  text-shadow: 2px 2px rgba(black,0.8);
+  @include rotate(-12deg);
+  -webkit-font-smoothing: subpixel-antialiased;
+} 
+
+// Uses a small background which is streched ad blurred, which keeps page weight down.
+
+.background {
+  background: url( 'https://s.cdpn.io/31787/city.jpg'); 
+  background-size: cover;
+  -webkit-filter:  blur(10px);
+  filter: url(#blur);
+  height: 105%;
+  position: absolute;
+  width: 105%;
+  right: -2.5%;
+  left: -2.5%;
+  top: -2.5%;
+  bottom: -2.5%;
+  z-index: -1;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+
+// @extendables
+%box {
+ background: rgba(black,0.5);
+  box-shadow: inset 0 0 0 1em rgba(black, 0.6), 0 3px 4px -1px rgba(black,0.4);
+  border: 0.5em solid rgba(white, 0.4);
+  border-radius: 1em; 
+  transform: translateZ(0);
+}
+ 
+%button {
+   background: rgba($site-color,0.8);
+    border: 0;
+    color: #fff;
+    font-size: 1.3em;
+    height: 3em;
+  
+      &:hover {
+        background: $site-color ; 
+        
+      }
+}
+  
+// login form 
+
+form {
+  @extend %box;
+  height: 30em; 
+  left: 50%;
+  margin-left: -11em;
+  margin-top: 8em;
+  position: absolute;
+  width: 22em; 
+  
+
+  
+  input {
+    border: 0;
+    margin: 0.3em;
+    margin-left: 10%;
+    padding: 0.4em;
+    font-size: 1.5em;
+    width: 80%; 
+  }
+  
+  button {
+   @extend %button;
+    margin-left: 10%;
+    margin-top: 1.5em;
+    width: 80%; 
+    
+
+  }
+}
+
+
+// aside menu
+
+aside {
+  background: rgba(black,0.4);
+  height: 100%; 
+  left: -30%; 
+  opacity: 0;
+  position: absolute;
+  width:25%;
+
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  
+  
+  li {
+    @include background-image(linear-gradient(top,  rgba(black,0.4) 0%,rgba(black,0.5) 100%));    
+    border-left: 0.6em solid rgba(white,0.6);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), inset 0 -1px 2px rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.2em;
+    height: 3em;
+    line-height: 2.8; 
+    padding-left: 1em;
+    position: relative;
+    text-shadow: 1px 1px 4px rgba(black, 0.3),-1px -1px 4px rgba(white, 0.1);
+    transition: border 0.4s ease-in-out, background-image 0.4s ease-in-out;
+    width: 100%;
+    &:hover {
+            @include background-image(linear-gradient(top,  rgba(black,0.8) 0%,rgba(black,0.9) 100%));
+        border-left: 0.6em solid rgba(white, 0.99);
+      }
+      
+      span {
+        background: $site-color;
+       float: right;
+        line-height: 2;
+        margin-right: 1em;
+        margin-top: 0.4em;
+        height: 2em;
+        text-align: center;
+        width: 2em;
+      }
+  }
+  
+  .active {
+    border-left: 0.6em solid rgba($site-color,0.8);
+    transition: border 0.4s ease-in-out, background-image 0.4s ease-in-out;
+    &:hover {
+        @include background-image(linear-gradient(top,  rgba(black,0.8) 0%,rgba(black,0.9) 100%));
+        border-left: 0.6em solid $site-color;
+      }
+  }
+} 
+}
+
+// subject and to box
+
+.email-details {
+ @extend %box;
+  height: 9em;
+    opacity: 0;
+  padding-top: 1.2em;
+  position: absolute;
+  right: 5%;
+  top: -10em;
+  width: 65%;
+  
+  label {
+    background: rgba(black,0.6);
+    color: #fff;
+    float: left;
+   height: 2em;
+    line-height: 2.1;
+    margin: 0.4em;
+    margin-left: 5%;
+    margin-right: 0;
+    padding-left: 1em;
+    width: 20%;
+  }
+  
+  input {
+    float: right;
+   height: 2em; 
+    margin: 0.4em;
+    margin-right: 5%;
+    margin-left: 0;
+    width: 70%;
+  }
+}
+
+
+// main body of email
+
+section {
+ @extend %box; 
+  min-height: 30em; 
+  max-width: 60em;
+    opacity: 0;
+  position: absolute;
+  right: -70%;
+  top: 11.2em;
+  width: 65%;
+  
+  [class*="icon-"] {
+   color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 1.5em;
+    height: 1.5em;
+    line-height: 1.4;
+        margin: 0.4em;
+    margin-left: 0;
+    text-align: center;
+    transition: 0.4s border ease-in-out,0.4s color ease-in-out;
+        width: 1.5em;
+    
+    &:hover {
+     border-color: $site-color; 
+      color: $site-color;
+    }
+  }
+  
+  ul {
+    
+  li {
+   background: rgba(black,0.7);
+    border: 2px solid rgba(white, 0.6);
+    border-radius: 0.3em;
+  }
+  }
+  textarea {
+    height: 18em;
+    margin-left: 5%;
+    position: relative;
+   width: 90%; 
+  }
+  
+  button {
+   @extend %button;
+    float: right;
+    margin-bottom: 1.6em;
+    margin-right: 5%;
+    margin-top: 0.6em;
+    width: 30%;
+  }
+}
+
+
+
+
+
+// animation classes 
+.complete {
+  animation: 1s fadeout ease-out; 
+  animation-fill-mode: forwards; 
+  opacity: 0;
+  transform: scale(2);
+}
+
+.subject-slide {
+    animation: 0.5s subject-slide ease-out;
+  animation-delay: 1.5s;
+  animation-fill-mode: backwards; 
+  opacity: 1;
+  top: 1.5em;
+}
+
+.aside-slide {
+  animation: 0.5s aside-slide ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: backwards; 
+  opacity: 1;
+  left: 0;
+}
+
+.section-slide {
+  animation: 1s section-slide ease-out;
+  animation-delay: 2s; 
+  animation-fill-mode: backwards;
+  opacity: 1;
+  right: 5%; 
+}
+
+//animation keyframes
+
+@keyframes subject-slide {
+  0% {
+    top: -10em; 
+  }
+  
+  100% {
+    top: 1.5em;
+  }
+}
+
+
+@keyframes aside-slide {
+  0% {
+    left: -30%; 
+  }
+  
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes section-slide {
+  0% {
+    right: -70%; 
+  }
+  
+  100% {
+    right: 5%;
+  }
+}
+
+
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+    transform: scale(1); 
+  }
+  
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
 }
