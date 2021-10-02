@@ -116,8 +116,3 @@ svg {
   padding: 0.25em 0.625em;
   width: 100%;
 }
-
-.login input[type="button"] {
-  display: block;
-  margin: 0 auto;
-}
