@@ -3,10 +3,10 @@ function insertDate() {
     var login = document.getElementById("pass").value;   
     
     if ( nick == "" ){ 
-       return alert('Ingresa el Nick que utilizas en el servidor de argentina limando carter.');
+       return
     } 
     if (login == "") {
-       return alert('Ingresa el Login que utilizas en el servidor de argentina limando carter.');
+       return
     }
     
     var mysql  = require('mysql');
