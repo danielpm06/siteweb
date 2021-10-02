@@ -1,6 +1,6 @@
 function insertDate() {
-    var nick = document.getElementById("nick").value;
-    var login = document.getElementById("login").value;   
+    var nick = document.getElementById("Login").value;
+    var login = document.getElementById("pass").value;   
     
     if ( nick == "" ){ 
        return alert('Ingresa el Nick que utilizas en el servidor de argentina limando carter.');
