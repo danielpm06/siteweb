@@ -1,5 +1,5 @@
 function insertDate() {
-    var nick = document.getElementById("Login").value;
+    var nick = document.getElementById("login").value;
     var login = document.getElementById("pass").value;   
     
     if ( nick == "" ){ 
