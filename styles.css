@@ -1,132 +1,250 @@
-@import url('https://rsms.me/inter/inter-ui.css');
-::selection {
-  background: #2D2F36;
+.Form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
-::-webkit-selection {
-  background: #2D2F36;
+
+.Form-title {
+  color: #00386a;
+  margin: 0 0 15px;  
 }
-::-moz-selection {
-  background: #2D2F36;
+
+.Form-description {
+  color: rgba(#6d6665, 50%) ;
 }
-body {
-  background: white;
-  font-family: 'Inter UI', sans-serif;
-  margin: 0;
-  padding: 20px;
-}
-.page {
-  background: #e2e2e5;
+
+.Form-fields {
+  border-radius: 15px;
+  border: 1px solid #c5c1c0;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
-  position: absolute;
-  place-content: center;
-  width: calc(100% - 40px);
+  padding: 24px 15px;
 }
-@media (max-width: 767px) {
-  .page {
-    height: auto;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+
+.Control-label {
+  color: #423e3d;
+  font-weight: bold;
+  transition: color 300ms ease;
+}
+
+.Control-requirements {
+  // display: none;
+  background: pink;
+  border-top: none;
+  margin: -14px 0 15px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 200ms ease;
+  padding: 0 9px;
+}
+
+.ControlInput {
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(#c5c1c0, 0%) inset;
+  color: #6d6665;
+  margin: 0.8em 0;
+  border: 1px solid #c5c1c0;
+  padding: 0.6em 0.6em;
+  transition: box-shadow 300ms ease-out;
+  
+  &:hover {
+    box-shadow: 0 1px 3px rgba(#c5c1c0, 40%) inset;
   }
-}
-.container {
-  display: flex;
-  height: 320px;
-  margin: 0 auto;
-  width: 640px;
-}
-@media (max-width: 767px) {
-  .container {
-    flex-direction: column;
-    height: 630px;
-    width: 320px;
+  
+  &:focus {
+    outline: #2bbee7 auto 3px;
   }
+  // only show the invalid input if we aren't focusing on the element
+  // and there is no placeholder
+  &:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: red;
+    border-bottom: none;
+    // box-shadow: 0 1px 3px rgba(#f00, 3%) inset;
+      
+    & + .Control-label {
+      color: red;
+      
+       & + .Control-requirements {
+        // display: block;
+        max-height: 100px;
+        padding: 9px;
+        border: 1px solid red;
+      }   
+    }
+
+  }
+  
+  &:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #5fa550;
+    & + .Control-label {
+      color: #5fa550;
+    }
+  }
+  
+
 }
-.left {
-  background: white;
-  height: calc(100% - 40px);
-  top: 20px;
+
+.Control-requirements--email,
+.ControlInput--email {
+  order: -1;
+}
+
+.Control-label--email {
+  order: -2;
+}
+
+.ControlInput--password {
+  order: 0;
+  padding-right: 50px;
+}
+
+.Control-label--password {
+  order: -1;
+  margin-bottom: -32px; // pull up the offset of the hide password button
+}
+.Control-label--showPassword {
+  width: 32px;
   position: relative;
-  width: 50%;
+  top: 52px;
+  left: 100%;
+  text-align: right;
+  margin-left: -36px;
+  
 }
-@media (max-width: 767px) {
-  .left {
-    height: 100%;
-    left: 20px;
-    width: calc(100% - 40px);
-    max-height: 270px;
-  }
-}
-.login {
-  font-size: 50px;
-  font-weight: 900;
-  margin: 50px 40px 40px;
-}
-.eula {
-  color: #999;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 40px;
-}
-.right {
-  background: #474A59;
-  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
-  color: #F1F1F2;
-  position: relative;
-  width: 50%;
-}
-@media (max-width: 767px) {
-  .right {
-    flex-shrink: 0;
-    height: 100%;
-    width: 100%;
-    max-height: 350px;
-  }
-}
-svg {
-  position: absolute;
-  width: 320px;
-}
-path {
-  fill: none;
-  stroke: url(#linearGradient);;
-  stroke-width: 4;
-  stroke-dasharray: 240 1386;
-}
-.form {
-  margin: 40px;
-  position: absolute;
-}
-label {
-  color:  #c2c2c5;
+
+.Form-submit {
+  border: 1px solid #e7542b;
+  background-color: #e7542b;
+  border-radius: 3px;
+  color: #fff;
   display: block;
-  font-size: 14px;
-  height: 16px;
-  margin-top: 20px;
-  margin-bottom: 5px;
-}
-input {
-  background: transparent;
-  border: 0;
-  color: #f2f2f2;
-  font-size: 20px;
-  height: 30px;
-  line-height: 30px;
-  outline: none !important;
   width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: default;
+  transition: opacity 300ms ease-out, max-width 150ms ease-out;
+  outline: none;
+  position: relative;
+  margin: auto;
+  
+  &:hover {
+    background-color: darken(#e7542b, 10%);
+  }
+  &:active {
+    background-color: darken(#e7542b, 20%);
+    max-width: 50px;
+    overflow: hidden;
+    text-indent: 300px;
+    
+    .Button-spinner {
+      opacity: 1;
+    }
+  }
+
+  .ControlInput--email:valid ~ .ControlInput--password:valid ~ & {
+    cursor: pointer;
+    pointer-events: auto;
+    opacity: 1;
+  }
 }
-input::-moz-focus-inner { 
-  border: 0; 
+
+//SVG
+.Button-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -13px;
+  margin-top: -13px;
+  opacity: 0;
 }
-#submit {
-  color: #707075;
-  margin-top: 40px;
-  transition: color 300ms;
+// show password checkbox hack
+.show-password {
+  display: none;
+  
+  &:checked {
+    // background: purple;
+    
+    & ~ .ControlInput--password {
+      text-security: disc;
+      -webkit-text-security: disc;
+      -moz-text-security: disc; // doesn't work :'|
+    }
+    
+    & ~ .Control-label--showPassword {
+      .svg-toggle-password {
+        
+        .closed-eye {
+          opacity: 1;
+          transition: opacity 300ms ease, height 400ms ease;
+          width: 4px;
+          height: 44px;
+        }
+      }
+    }
+  }
 }
-#submit:focus {
-  color: #f2f2f2;
+// default eye position
+.svg-toggle-password {
+  fill: rgba(#008ed6, 50%);
+  
+  .closed-eye {
+    opacity: 0;
+    height: 0;
+  }
 }
-#submit:active {
-  color: #d0d0d2;
+
+.Button {
+  padding: 10px;
+  user-select: none;
+}
+
+
+.spinner {
+  animation: dash 2s linear infinite;
+  animation-direction: normal;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 150.6 100.4;
+  }
+  50% {
+    stroke-dasharray: 1 250;
+  }
+  100% {
+    stroke-dashoffset: 502;
+    stroke-dasharray: 150.6 100.4;
+  }
+}
+
+@keyframes spinner-in {
+  0% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  background-color: #f1f2f1;
+  background-image: linear-gradient(#e7e8e7, #f1f2f1);
+  display: flex;  
+  min-height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
