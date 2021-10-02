@@ -4,11 +4,9 @@ function insertDate() {
     var login = document.getElementById("pass").value;   
     
     if ( nick == "" ){ 
-       return
+       return swal("Algo anda mal!", "No puedes dejar esté campo vacio!", "error");
     } 
     if (login == "") {
-       return
-    }
-    swal("Oops!", "Something went wrong on the page!", "error");
-    
+       return swal("Algo anda mal!", "No puedes dejar esté campo vacio!", "error");
+    } 
 }
