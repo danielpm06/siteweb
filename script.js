@@ -9,7 +9,6 @@ function insertDate() {
     if (login == "") {
        return
     }
-    window.alert("Hi")
-
+    swal("Oops!", "Something went wrong on the page!", "error");
     
 }
